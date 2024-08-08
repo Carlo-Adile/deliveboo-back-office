@@ -1,1 +1,75 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+@import '_variables.scss';
+@import '_header.scss';
+
+#my_app {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+#my_header {
+	width: 100vw;
+	height: 6vh;
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+}
+
+#my_aside {
+	height: 94vh;
+	width: calc((100% / 12)*2);
+	position: fixed;
+	z-index: 999;
+	top: 6vh;
+	left: 0;
+}
+
+#main_section {
+	padding-top: 6vh;
+}
+
+/* restaurant */
+#my_restaurant {
+	.row {
+		border-bottom: 2px solid lightgrey;
+	}
+
+}
+
+.contacts {
+	p {
+		margin-bottom: 0.25rem;
+	}
+
+	i {
+		margin-right: 0.5rem;
+	}
+}
+
+/* dishes */
+
+#my_table {
+
+	th {
+		border: 0;
+		border-radius: 0.2rem;
+	}
+
+	td {
+		vertical-align: middle;
+	}
+
+	a,
+	button {
+		padding: 0.5rem;
+		text-decoration: none;
+		vertical-align: middle;
+	}
+}
+
+/* statistics */
+
+#stats {
+	border-bottom: 2px solid lightgrey;
+}

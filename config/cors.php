@@ -19,9 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
+    'allowed_origins' => [env('APP_FRONT_URL'), 'http://localhost:5174', 'http://localhost:5173'],
 
     'allowed_headers' => ['*'],
 

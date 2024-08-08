@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\OrderController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\StatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +22,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [RestaurantController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,4 +31,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'verified'])
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+
+        Route::resource('/restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+        Route::resource('/dishes', DishController::class);
+        Route::resource('/orders', OrderController::class);
+        Route::resource('/stats', StatController::class);
+        
+
+    });
+
+require __DIR__ . '/auth.php';
