@@ -66,7 +66,6 @@ class RestaurantController extends Controller
         $typesList = $request['typesList'];
         $filteredList = count($typesList);
 
-
         /* la query usata: */
         /* SELECT `name_restaurant`,`restaurants`.`id` FROM `restaurants`
         JOIN `restaurant_type` ON `restaurants`.`id` = `restaurant_type`.`restaurant_id`

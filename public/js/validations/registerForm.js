@@ -87,10 +87,10 @@ function validateRegisterForm(event) {
 
     //types
     let typesHelp = document.getElementById('typesHelp');
-    if (typesHelp) { 
+    if (typesHelp) {
         typesHelp.remove();
     }
-    
+
     let atLeastOneChecked = false;
     types.forEach(type => {
         if (type.checked) {
@@ -104,7 +104,7 @@ function validateRegisterForm(event) {
     }
 
     //contactEmail
-    let contactEmailHelp = document.getElementById('contactEmailHelp');
+    /* let contactEmailHelp = document.getElementById('contactEmailHelp');
     if (contactEmailHelp) {
         contactEmailHelp.remove();
         contactEmail.classList.remove('is-invalid');
@@ -115,8 +115,8 @@ function validateRegisterForm(event) {
         contactEmail.classList.remove('is-valid');
         contactEmail.classList.add('is-invalid');
         pushForm = false;
-    }
-    
+    } */
+
     //phoneNumber
     if (phoneNumber.value) {
         let phoneNumberHelp = document.getElementById('phoneNumberHelp');
@@ -132,7 +132,7 @@ function validateRegisterForm(event) {
             pushForm = false;
         }
     }
-    
+
     //thumb
     thumb.classList.remove('is-valid');
     if (thumb.value) {
@@ -149,7 +149,7 @@ function validateRegisterForm(event) {
             pushForm = false;
         }
     }
-    
+
     //logo
     logo.classList.remove('is-valid');
     if (logo.value) {
@@ -174,27 +174,27 @@ function validateRegisterForm(event) {
         password.classList.remove('is-invalid');
     }
     password.classList.add('is-valid');
-    
+
     let passwordCheckHelp = document.getElementById('passwordCheckHelp');
     if (passwordCheckHelp) {
         passwordCheckHelp.remove();
         passwordCheck.classList.remove('is-invalid');
     }
     passwordCheck.classList.add('is-valid');
-    
+
     if (password.value !== passwordCheck.value) {
         password.insertAdjacentHTML('afterend', '<small id="passwordHelp" class="text-danger d-block">La password e la conferma della password non corrispondono</small>');
         passwordCheck.insertAdjacentHTML('afterend', '<small id="passwordCheckHelp" class="text-danger d-block">La password e la conferma della password non corrispondono</small>');
-        
+
         password.classList.remove('is-valid');
         passwordCheck.classList.remove('is-valid');
-        
+
         password.classList.add('is-invalid');
         passwordCheck.classList.add('is-invalid');
-        
+
         pushForm = false;
     }
-    
+
     //password
     let passwordLenghtHelp = document.getElementById('passwordLenghtHelp');
     if (passwordLenghtHelp) {
@@ -208,7 +208,7 @@ function validateRegisterForm(event) {
         password.classList.add('is-invalid');
         pushForm = false;
     }
-    
+
     //passwordCheck
     let passwordCheckLenghtHelp = document.getElementById('passwordCheckLenghtHelp');
     if (passwordCheckLenghtHelp) {
@@ -222,11 +222,11 @@ function validateRegisterForm(event) {
         passwordCheck.classList.add('is-invalid');
         pushForm = false;
     }
-    
-    
+
+
     // debug mode
     // event.preventDefault(event);
-    
+
     //form validation !important: this must be the last validation
     if (pushForm === false) {
         event.preventDefault(event);

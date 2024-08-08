@@ -175,7 +175,7 @@ class StatController extends Controller
 					],
 				],
 				'indexAxis' => 'y',
-				'barThickness' => 30
+				/* 'barThickness' => 30 */
 			]);
 
 		return view('admin.stats.index', compact('chartjs', 'chartjs2', 'selectedPeriod'));

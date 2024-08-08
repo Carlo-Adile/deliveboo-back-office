@@ -11,6 +11,7 @@ use App\Models\Dish;
 use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewLeadMessage;
+
 class OrderController extends Controller
 {
 
@@ -59,7 +60,7 @@ class OrderController extends Controller
                     'order' => $order,
                     'paymentMethodNonce' => $request->token,
                     'all' => $request->all(),
-                
+
                 ];
                 return response()->json($data, 400);
             }
@@ -83,7 +84,7 @@ class OrderController extends Controller
         //vado a creare la nuova email con il costruttore sia per l'utente che per il ristoratore
         Mail::to($request->customerEmail)->send(new NewLeadMessage($allDishes, $newOrder, true));
 
-        Mail::to( $singleRestaurant->contact_email)->send(new NewLeadMessage($order, $singleRestaurant, false));
+        Mail::to($singleRestaurant->user->email)->send(new NewLeadMessage($order, $singleRestaurant, false));
 
 
 
@@ -93,7 +94,7 @@ class OrderController extends Controller
             $newOrder->dishes()->attach($dishOrder['id'], [
                 'dish_name' => $dishControl->name,
                 'dish_quantity' => $dishOrder['quantity'],
-                'dish_price' =>  $dishControl->price,
+                'dish_price' => $dishControl->price,
             ]);
         }
 
@@ -119,7 +120,7 @@ class OrderController extends Controller
                 'all' => $request->all(),
                 'totalPrice' => $totalPrice,
                 'result' => $result,
-                'allDishes'=>$allDishes,
+                'allDishes' => $allDishes,
             ];
             return response()->json($data, 200);
         } else {
@@ -132,7 +133,7 @@ class OrderController extends Controller
                 'totalPrice' => $totalPrice,
                 'result' => $result,
                 // debugg comment 
-                'allDishes'=>$allDishes,
+                'allDishes' => $allDishes,
             ];
             return response()->json($data, 401);
         }
