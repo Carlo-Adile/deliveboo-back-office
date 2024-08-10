@@ -14,7 +14,7 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $types = ['Cinese', 'Sushi', 'Italiano', 'Pizzeria', 'Fast Food', 'Steak House', 'Asiatico', 'Indiano'];
+        $types = ['Cinese', 'Sushi', 'Italiano', 'Pizzeria', 'Fast Food', 'Steak House', 'Asiatico', 'Indiano', 'Panineria'];
 
         foreach ($types as $typeData) {
             $type = new Type();
